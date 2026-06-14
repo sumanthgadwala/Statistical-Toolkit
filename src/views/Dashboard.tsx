@@ -4,7 +4,7 @@ import { useDatasetStore } from '../store/useDatasetStore';
 import { BarChart3, Layers, Terminal as CliIcon, Hourglass } from 'lucide-react';
 
 export const Dashboard: React.FC = () => {
-  const { fullData, columnMetadata, activityLog, setActiveView } = useDatasetStore();
+  const { fullData, columnMetadata, activityLog } = useDatasetStore();
 
   return (
     <div className="space-y-10">
