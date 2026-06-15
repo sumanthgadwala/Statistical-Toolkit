@@ -5,10 +5,14 @@ import { StatsEngine } from './views/StatsEngine';
 import { AnalyticsCenter } from './views/AnalyticsCenter';
 import { MathSimulators } from './views/MathSimulators';
 import { ReportingDocumentation } from './views/ReportingDocumentation';
+import { UserGuide } from './views/UserGuide';
 import { useDatasetStore } from './store/useDatasetStore';
-import { BarChart3, UploadCloud, Cpu, Binary, Terminal, BrainCircuit, ArrowRight, Code, FileText } from 'lucide-react';
+import {
+  BarChart3, UploadCloud, Cpu, Binary, Terminal, BrainCircuit,
+  ArrowRight, Code, FileText, BookOpen,
+} from 'lucide-react';
 
-type Route = 'ingest' | 'statistics' | 'ml' | 'simulators' | 'ai_insights' | 'cli' | 'reporting';
+type Route = 'ingest' | 'statistics' | 'ml' | 'simulators' | 'ai_insights' | 'cli' | 'reporting' | 'guide';
 
 export default function App() {
   const [route, setRoute] = useState<Route>('ingest');
@@ -76,6 +80,23 @@ export default function App() {
           </button>
           <button className={nb('cli')} onClick={() => setRoute('cli')}>
             <Terminal size={13} /> CLI
+          </button>
+        </div>
+
+        {/* Guide button — visually separated and accented so it's easy to spot */}
+        <div className="topnav-group">
+          <span className="topnav-group-label">Help</span>
+          <button
+            className={nb('guide')}
+            onClick={() => setRoute('guide')}
+            style={route !== 'guide' ? {
+              background: '#c8ff57',
+              color: '#0d0d0d',
+              border: '1.5px solid #0d0d0d',
+              fontWeight: 700,
+            } : {}}
+          >
+            <BookOpen size={13} /> User Guide
           </button>
         </div>
 
@@ -273,6 +294,20 @@ export default function App() {
                   <div className="cli-desc">{item.desc}</div>
                 </div>
               ))}
+          </>
+        )}
+
+        {/* USER GUIDE */}
+        {route === 'guide' && (
+          <>
+            <div className="ph">
+              <div>
+                <div className="ph-title">User Guide</div>
+                <div className="ph-sub">Step-by-step instructions for every module in StatToolkit.</div>
+              </div>
+              <div className="ph-tag">// HELP</div>
+            </div>
+            <UserGuide />
           </>
         )}
 
