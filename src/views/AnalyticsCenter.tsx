@@ -91,7 +91,6 @@ export const AnalyticsCenter: React.FC = () => {
   const [histCol, setHistCol] = useState<string>('');
   const [boxCol, setBoxCol] = useState<string>('');
   const [pieCol, setPieCol] = useState<string>('');
-  const [pieGroupCol, setPieGroupCol] = useState<string>('');
 
   // All columns (for box plot and pie — some may be categorical)
   const allCols = useMemo(() => columnMetadata.map(c => c.name), [columnMetadata]);
